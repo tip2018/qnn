@@ -44,7 +44,6 @@ print('Construct the Network\n')
 model = build_model(cf)
 
 
-
 print('setting up the network and creating callbacks\n')
 
 early_stop = EarlyStopping(monitor='loss', min_delta=0.001, patience=10, mode='min', verbose=1)
@@ -88,7 +87,7 @@ model.fit(x_train,y_train,
             epochs = cf.epochs,
             verbose = cf.progress_logging,
             callbacks = [checkpoint, tensorboard,lr_decay],
-            validation_data = (x_valid,y_valid))
+            validation_data = (x_test,y_test))
 
 
 print('Done\n')

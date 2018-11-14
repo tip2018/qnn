@@ -15,9 +15,10 @@ def load_dataset(dataset):
 		x_train = x_train[0:train_set_size,:,:,:]
 		y_train = y_train[0:train_set_size:,:]
 
-		x_train = np.transpose(np.reshape(np.subtract(np.multiply(2. / 255., x_train), 1.), (-1, 3, 32, 32)),(0,2,3,1))
-		x_valid = np.transpose(np.reshape(np.subtract(np.multiply(2. / 255., x_valid), 1.), (-1, 3, 32, 32)),(0,2,3,1))
-		x_test = np.transpose(np.reshape(np.subtract(np.multiply(2. / 255., x_test), 1.), (-1, 3, 32, 32)),(0,2,3,1))
+		x_train = np.subtract(np.multiply(2. / 255., x_train), 1.)
+		x_valid = np.subtract(np.multiply(2. / 255., x_valid), 1.)
+		x_test = np.subtract(np.multiply(2. / 255., x_test), 1.)
+
 		# flatten targets
 		y_train = np.hstack(y_train)
 		y_valid = np.hstack(y_valid)
@@ -32,6 +33,7 @@ def load_dataset(dataset):
 		y_train = 2 * y_train - 1.
 		y_valid = 2 * y_valid - 1.
 		y_test = 2 * y_test - 1.
+
 		# enlarge train data set by mirrroring
 		x_train_flip = x_train[:, :, ::-1, :]
 		y_train_flip = y_train
@@ -73,9 +75,6 @@ def load_dataset(dataset):
 		y_train_flip = y_train
 		x_train = np.concatenate((x_train, x_train_flip), axis=0)
 		y_train = np.concatenate((y_train, y_train_flip), axis=0)
-
-
-
 
 	else:
 		print("wrong dataset given")
