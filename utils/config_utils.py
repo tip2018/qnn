@@ -9,7 +9,7 @@ def import_from(mdl, name):
 #required, default (if not required), type, subtype*(if previous type is list or tuple)
 parameter_specs = {
     'cpu'                      :[True, None, bool],
-    'epochs'                   :[True, None, str],
+    'epochs'                   :[True, None, int],
     'network_type'             :[True, None, str],
     'finetune'                 :[True, None, bool],
     'out_wght_path'            :[True, None, str],
