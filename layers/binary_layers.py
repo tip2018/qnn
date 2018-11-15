@@ -117,7 +117,7 @@ class BinaryConv2D(Conv2D):
                                  'should be defined. Found `None`.')
 
         input_dim = input_shape[channel_axis]
-        kernel_shape = self.kernel_size + (input_dim, self.filters)
+        kernel_shape = self.kernel_size + (int(input_dim), self.filters)
             
         base = self.kernel_size[0] * self.kernel_size[1]
         if self.H == 'Glorot':
